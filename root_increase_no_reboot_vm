@@ -1,0 +1,30 @@
+#Increase the root partition without rebooting it 
+
+#First add the HDD into the guest VM
+#To attach the HDD into the guest from guest side you need to rescan the scsi
+
+echo "- - -" > /sys/class/scsi_host/host#/scan   #host0 or host1 just select
+
+#After that check whether it's listed in guest
+#lsblk will list the HDD
+
+lsblk 
+
+#Use fdsik or gdisk to create linux-lvm partition
+
+fdisk /dev/sdb #Here sdb is my HDDD
+
+#After creating the pv add them into the VG and LV
+
+pvcreate /dev/sdb1
+vgentend <VG_NAME> /dev/sdb1
+lvextend +100%FREE /dev/mapper/<VG_NAME>-<LV_NAME>
+
+#incase it is an ext standard partition then use 
+resize2fs /dev/mapper/<VG_NAME>-<LV_NAME>
+
+#incase it is an xfs file system then
+xfs_growfs	/dev/mapper/<VG_NAME>-<LV_NAME>
+
+#now check the lvs vgs and partitions
+df -hT
