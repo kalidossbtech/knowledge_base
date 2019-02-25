@@ -1,0 +1,16 @@
+#Create a shared HDD in vmware Workstation
+
+1 . create a HDD in any one VM
+2 . open the VMX file of that particular instance
+3 . add the following line depends on the need
+
+scsi0:2.fileName = "F:\VMware_vms\ha_cluster_2\shared_disk.vmdk"
+scsi0:2.present = "TRUE"
+scsi0:2.virtualDev = "lsilogic"
+scsi0:2.mode = "independent-persistent"
+disk.locking = "false"
+diskLib.dataCacheMaxSize = "0"
+
+
+4 . Open the VMX file machine that you want to connect the shared HDD and add the above mentioned line.
+5 . Start both VM's  and check it.
