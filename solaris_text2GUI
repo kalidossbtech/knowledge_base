@@ -1,0 +1,36 @@
+Oracle solaris Text to GUI
+#beadm is a Boot Environment that we are going 
+
+#Create a Boot environment
+beadm list
+beadm create Solaris-GUI 
+
+#Mount the Boot Environment
+beadm mount Solaris-GUI /mnt
+
+#install the gui packages in Solaris-GUI Boot environment and use /mnt as a root (-R option) dir
+beadm -R /mnt install babel_install 
+
+#update the archive files in boot environment
+bootadm update-archive -R /mnt
+
+#Now we have the make Solaris-GUI as Boot environment at Runtime after reboot SO
+beadm umount /mnt
+beadm activate Solaris-GUI
+
+#Check whether it is activated or not
+beadm list
+
+
+#Check the boot environment using this 
+bootadm list-menu
+
+
+#Reboot the machine to see the GUI ( -R Gracetime and -i boot init level, for GUI init 6 )
+shutdown -g 10 -i 6
+
+
+#After reboot if the old environment is no needed then delete is by using
+beadm destroy Solaris-GUI
+
+
