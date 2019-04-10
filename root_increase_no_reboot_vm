@@ -18,7 +18,7 @@ fdisk /dev/sdb #Here sdb is my HDDD
 
 pvcreate /dev/sdb1
 vgentend <VG_NAME> /dev/sdb1
-lvextend +100%FREE /dev/mapper/<VG_NAME>-<LV_NAME>
+lvextend -l +100%FREE /dev/mapper/<VG_NAME>-<LV_NAME>
 
 #incase it is an ext standard partition then use 
 resize2fs /dev/mapper/<VG_NAME>-<LV_NAME>
