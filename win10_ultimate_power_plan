@@ -1,0 +1,17 @@
+#This will enable the hidden feature of Power plan in windows 10
+#It's called Ultimate Power plan
+#To enable it OPen Powershell Or cmd in Admin mode then type this command
+
+
+powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+
+
+ 
+#After enable this go and check the settings in control Panel 
+ 
+ Windows key + R 
+ Type Control panel 
+ Select Hardware and Sound -> Power Options
+#[ Control Panel\Hardware and Sound\Power Options ]
+
+The ultimate Power plan will be enabled there.
