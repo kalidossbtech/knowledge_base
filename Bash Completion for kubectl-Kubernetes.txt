@@ -1,0 +1,28 @@
+## Bash Completion for Kubernetes 
+
+#Install the Bash completion script
+yum install bash-completion 
+
+#bash completion script file location
+ls /usr/share/bash-completion/bash_completion
+
+#add the following line into /etc/bashrc
+source /usr/share/bash-completion/bash_completion
+
+#verify the completion script 
+type _init_completion
+
+#Add the completion script to the /etc/bash_completion.d directory
+kubectl completion bash >/etc/bash_completion.d/kubectl
+
+#check the kubectl commands
+kubectl get pods
+
+
+References : 
+https://kubernetes.io/docs/tasks/tools/install-kubectl/
+
+
+
+
+
